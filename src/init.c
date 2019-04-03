@@ -2,6 +2,8 @@
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 
+#include "pushexit.h"
+
 
 extern SEXP pushexit_invoke(SEXP, SEXP);
 
@@ -29,8 +31,10 @@ void R_init_pushexit(DllInfo *dll) {
   R_useDynamicSymbols(dll, FALSE);
 
   fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
-}
 
+  R_RegisterCCallable("pushexit", "r_with_exit_context", (DL_FUNC) &r_with_exit_context);
+  R_RegisterCCallable("pushexit", "r_push_exit", (DL_FUNC) &r_push_exit);
+}
 
 // Compatiblity - R API does not have a setter for function pointers
 
