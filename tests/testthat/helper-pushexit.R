@@ -1,4 +1,7 @@
 
+test_no_context <- function() {
+  .Call(ptr_return, pairlist(NULL))
+}
 test_return <- function(node) {
   ptr_invoke(ptr_return, node)
 }

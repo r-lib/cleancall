@@ -24,3 +24,7 @@ test_that("handlers can jump", {
 test_that("can call without callbacks", {
   expect_error(regexp = NA, test_no_cb())
 })
+
+test_that("pushing exit outside of context is an error", {
+  expect_error(test_no_context(), "outside of an exit context")
+})

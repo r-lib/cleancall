@@ -33,6 +33,10 @@ SEXP r_with_exit_context(SEXP (*fn)(void* data), void* data) {
 }
 
 void r_push_exit(void (*fn)(void* data), void* data) {
+  if (!callbacks) {
+    Rf_error("Internal error: Exit handler pushed outside of an exit context");
+  }
+
   SEXP top = CDR(callbacks);
 
   // FIXME: Preallocate the callback in case the allocator jumps
