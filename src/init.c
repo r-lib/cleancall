@@ -30,3 +30,29 @@ void R_init_pushexit(DllInfo *dll) {
 
   fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
 }
+
+
+// Compatiblity - R API does not have a setter for function pointers
+
+typedef union { void *p; DL_FUNC fn; } fn_ptr;
+
+SEXP pushexit_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot)
+{
+    fn_ptr tmp;
+    tmp.fn = p;
+    return R_MakeExternalPtr(tmp.p, tag, prot);
+}
+
+DL_FUNC pushexit_ExternalPtrAddrFn(SEXP s)
+{
+    fn_ptr tmp;
+    tmp.p =  EXTPTR_PTR(s);
+    return tmp.fn;
+}
+
+void pushexit_SetExternalPtrAddrFn(SEXP s, DL_FUNC p)
+{
+    fn_ptr tmp;
+    tmp.fn = p;
+    R_SetExternalPtrAddr(s, p);
+}
