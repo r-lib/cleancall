@@ -9,15 +9,15 @@ void pushexit_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
 
 static SEXP callbacks = NULL;
 
-// Preallocate a callback and push it on the stack
-static void push_callback() {
-  SEXP top = CDR(callbacks);
+// Preallocate a callback
+static void push_callback(SEXP stack) {
+  SEXP top = CDR(stack);
 
   SEXP fn_extptr = PROTECT(pushexit_MakeExternalPtrFn(NULL, R_NilValue, R_NilValue));
   SEXP data_extptr = PROTECT(R_MakeExternalPtr(NULL, R_NilValue, R_NilValue));
   SEXP cb = Rf_cons(Rf_cons(fn_extptr, data_extptr), top);
 
-  SETCDR(callbacks, cb);
+  SETCDR(stack, cb);
 
   UNPROTECT(2);
 }
@@ -42,9 +42,13 @@ static void call_exits(void* data) {
 }
 
 SEXP r_with_exit_context(SEXP (*fn)(void* data), void* data) {
+  // Preallocate new stack before changing `callbacks` to avoid
+  // leaving the global variable in a bad state if alloc fails
+  SEXP new = PROTECT(Rf_cons(R_NilValue, R_NilValue));
+  push_callback(new);
+
   SEXP old = callbacks;
-  callbacks = PROTECT(Rf_cons(R_NilValue, R_NilValue));
-  push_callback();
+  callbacks = new;
 
   SEXP out = R_ExecWithCleanup(fn, data, &call_exits, (void*) old);
 
@@ -64,5 +68,5 @@ void r_push_exit(void (*fn)(void* data), void* data) {
   R_SetExternalPtrAddr(CDR(cb), data);
 
   // Preallocate the next callback in case the allocator jumps
-  push_callback();
+  push_callback(callbacks);
 }
