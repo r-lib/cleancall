@@ -24,8 +24,9 @@ static void push_callback(SEXP stack) {
 
 
 static void call_exits(void* data) {
-  // Remove protecting node and preallocated callback
-  SEXP top = CDDR(callbacks);
+  // Remove protecting node. Don't remove the preallocated callback on
+  // the top as it might contain a handler when something went wrong.
+  SEXP top = CDR(callbacks);
 
   // Restore old stack
   callbacks = (SEXP) data;
@@ -37,7 +38,11 @@ static void call_exits(void* data) {
 
     void (*fn)(void*) = (void (*)(void*)) R_ExternalPtrAddrFn(CAR(cb));
     void *data = (void*) EXTPTR_PTR(CDR(cb));
-    fn(data);
+
+    // Check for empty pointer in preallocated callbacks
+    if (fn) {
+      fn(data);
+    }
   }
 }
 
