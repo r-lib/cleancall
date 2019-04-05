@@ -31,11 +31,11 @@ SEXP test_callback_jump(SEXP node) {
   r_push_cleanup(cb, (void*) &data2);
 
   Rf_error("tilt");
-}
+} /* # nocov (we never get here) */
 
 static void jumpy_cb(void* data_) {
   Rf_error("jump");
-}
+} /* # nocov (we never get here) */
 
 SEXP test_jumpy_callback(SEXP node) {
   r_push_cleanup(jumpy_cb, NULL);
@@ -47,7 +47,7 @@ SEXP test_jumpy_callback(SEXP node) {
   r_push_cleanup(cb, (void*) &data2);
 
   Rf_error("tilt");
-}
+} /* # nocov (we never get here)*/
 
 SEXP test_no_callbacks() {
   return R_NilValue;

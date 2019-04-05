@@ -15,9 +15,8 @@ test_that("handlers are called on error", {
 })
 
 test_that("handlers can jump", {
-  skip("FIXME")
   node <- pairlist(NULL)
-  expect_error(test_jumpy_cb(node), "tilt")
+  expect_error(test_jumpy_cb(node), "jump")
   expect_identical(node, exp)
 })
 
