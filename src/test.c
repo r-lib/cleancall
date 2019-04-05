@@ -15,20 +15,20 @@ static void cb(void* data_) {
 
 SEXP test_callback_return(SEXP node) {
   struct cb_data data1 = { node, Rf_install("first") };
-  r_push_exit(cb, (void*) &data1);
+  r_push_cleanup(cb, (void*) &data1);
 
   struct cb_data data2 = { node, Rf_install("second") };
-  r_push_exit(cb, (void*) &data2);
+  r_push_cleanup(cb, (void*) &data2);
 
   return R_NilValue;
 }
 
 SEXP test_callback_jump(SEXP node) {
   struct cb_data data1 = { node, Rf_install("first") };
-  r_push_exit(cb, (void*) &data1);
+  r_push_cleanup(cb, (void*) &data1);
 
   struct cb_data data2 = { node, Rf_install("second") };
-  r_push_exit(cb, (void*) &data2);
+  r_push_cleanup(cb, (void*) &data2);
 
   Rf_error("tilt");
 }
@@ -38,13 +38,13 @@ static void jumpy_cb(void* data_) {
 }
 
 SEXP test_jumpy_callback(SEXP node) {
-  r_push_exit(jumpy_cb, NULL);
+  r_push_cleanup(jumpy_cb, NULL);
 
   struct cb_data data1 = { node, Rf_install("first") };
-  r_push_exit(cb, (void*) &data1);
+  r_push_cleanup(cb, (void*) &data1);
 
   struct cb_data data2 = { node, Rf_install("second") };
-  r_push_exit(cb, (void*) &data2);
+  r_push_cleanup(cb, (void*) &data2);
 
   Rf_error("tilt");
 }

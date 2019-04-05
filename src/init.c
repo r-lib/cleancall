@@ -33,7 +33,7 @@ void R_init_cleancall(DllInfo *dll) {
   fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
 
   R_RegisterCCallable("cleancall", "r_with_cleanup_context", (DL_FUNC) &r_with_cleanup_context);
-  R_RegisterCCallable("cleancall", "r_push_exit", (DL_FUNC) &r_push_exit);
+  R_RegisterCCallable("cleancall", "r_push_cleanup", (DL_FUNC) &r_push_cleanup);
 }
 
 // Compatiblity - R API does not have a setter for function pointers

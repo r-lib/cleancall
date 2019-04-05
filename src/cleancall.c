@@ -61,7 +61,7 @@ SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data) {
   return out;
 }
 
-void r_push_exit(void (*fn)(void* data), void* data) {
+void r_push_cleanup(void (*fn)(void* data), void* data) {
   if (!callbacks) {
     fn(data);
     Rf_error("Internal error: Exit handler pushed outside of an exit context");
