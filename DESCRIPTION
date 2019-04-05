@@ -3,7 +3,9 @@ Title: Push exit handlers for C resources
 Version: 0.0.0.9000
 Authors@R: c(
     person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut", "cre")),
-    person("Hadley", "Wickham", ,"hadley@rstudio.com", "aut"),
+    person("Gábor", "Csárdi", role = "aut",
+           email = "csardi.gabor@gmail.com",
+           comment = c(ORCID = "0000-0001-7098-9676")),
     person("RStudio", role = "cph")
     )
 Description: What the package does (one paragraph).

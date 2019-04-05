@@ -13,7 +13,7 @@ What the package does (one paragraph).
 
 Authors:
 \itemize{
-  \item Hadley Wickham \email{hadley@rstudio.com}
+  \item Gábor Csárdi \email{csardi.gabor@gmail.com} (0000-0001-7098-9676)
 }
 
 Other contributors:
