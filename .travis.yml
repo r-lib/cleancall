@@ -2,3 +2,16 @@
 
 language: R
 cache: packages
+
+matrix:
+  include:
+  - r: devel
+  - r: release
+  - r: oldrel
+  - r: 3.3
+  - r: 3.2
+
+env:
+  global:
+    - MAKEFLAGS="-j 2"
+    - _R_CHECK_SYSTEM_CLOCK_=FALSE
