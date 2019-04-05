@@ -8,5 +8,5 @@
 #'
 #' @export
 call_with_cleanup <- function(ptr, ...) {
-  .Call(cleancall_call, pairlist(ptr, ...), parent.frame())
+  .Call(ptr_call, pairlist(ptr, ...), parent.frame())
 }
