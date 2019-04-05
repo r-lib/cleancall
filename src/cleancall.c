@@ -1,10 +1,7 @@
 #define R_NO_REMAP
 #include <Rinternals.h>
 
-// Compats defined in init.c because the R API does not have a setter
-// for external function pointers
-SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot);
-void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
+#include "compat.h"
 
 
 static SEXP callbacks = NULL;
