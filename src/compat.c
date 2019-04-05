@@ -29,7 +29,7 @@ SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot)
 
 void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p)
 {
-    fn_ptr tmp;
-    tmp.fn = p;
-    R_SetExternalPtrAddr(s, p);
+    fn_ptr ptr;
+    ptr.fn = p;
+    R_SetExternalPtrAddr(s, ptr.p);
 }
