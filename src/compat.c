@@ -16,3 +16,20 @@
    return ptr.fn;
  }
 #endif
+
+
+// The R API does not have a setter for function pointers
+
+SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot)
+{
+    fn_ptr tmp;
+    tmp.fn = p;
+    return R_MakeExternalPtr(tmp.p, tag, prot);
+}
+
+void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p)
+{
+    fn_ptr tmp;
+    tmp.fn = p;
+    R_SetExternalPtrAddr(s, p);
+}
