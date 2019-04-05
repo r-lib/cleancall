@@ -5,7 +5,7 @@
 #include "cleancall.h"
 
 
-extern SEXP cleancall_invoke(SEXP, SEXP);
+extern SEXP cleancall_call(SEXP, SEXP);
 
 extern SEXP test_callback_return(SEXP);
 extern SEXP test_callback_jump(SEXP);
@@ -13,7 +13,7 @@ extern SEXP test_jumpy_callback(SEXP);
 extern SEXP test_no_callbacks();
 
 static const R_CallMethodDef CallEntries[] = {
-  {"cleancall_invoke", (DL_FUNC) &cleancall_invoke, 2},
+  {"cleancall_call", (DL_FUNC) &cleancall_call, 2},
 
   {"ptr_jump",        (DL_FUNC) &test_callback_jump, 1},
   {"ptr_return",      (DL_FUNC) &test_callback_return, 1},

@@ -7,6 +7,6 @@
 #' @param ... Arguments for the native routine.
 #'
 #' @export
-ptr_invoke <- function(ptr, ...) {
-  .Call(cleancall_invoke, pairlist(ptr, ...), parent.frame())
+call_with_cleanup <- function(ptr, ...) {
+  .Call(cleancall_call, pairlist(ptr, ...), parent.frame())
 }
