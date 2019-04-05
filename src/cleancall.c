@@ -3,8 +3,8 @@
 
 // Compats defined in init.c because the R API does not have a setter
 // for external function pointers
-SEXP pushexit_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot);
-void pushexit_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
+SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot);
+void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
 
 
 static SEXP callbacks = NULL;
@@ -13,7 +13,7 @@ static SEXP callbacks = NULL;
 static void push_callback(SEXP stack) {
   SEXP top = CDR(stack);
 
-  SEXP fn_extptr = PROTECT(pushexit_MakeExternalPtrFn(NULL, R_NilValue, R_NilValue));
+  SEXP fn_extptr = PROTECT(cleancall_MakeExternalPtrFn(NULL, R_NilValue, R_NilValue));
   SEXP data_extptr = PROTECT(R_MakeExternalPtr(NULL, R_NilValue, R_NilValue));
   SEXP cb = Rf_cons(Rf_cons(fn_extptr, data_extptr), top);
 
@@ -70,7 +70,7 @@ void r_push_exit(void (*fn)(void* data), void* data) {
   SEXP cb = CADR(callbacks);
 
   // Update pointers
-  pushexit_SetExternalPtrAddrFn(CAR(cb), (DL_FUNC) fn);
+  cleancall_SetExternalPtrAddrFn(CAR(cb), (DL_FUNC) fn);
   R_SetExternalPtrAddr(CDR(cb), data);
 
   // Preallocate the next callback in case the allocator jumps

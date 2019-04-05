@@ -1,4 +1,4 @@
 library(testthat)
-library(pushexit)
+library(cleancall)
 
-test_check("pushexit")
+test_check("cleancall")

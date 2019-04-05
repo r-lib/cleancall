@@ -1,5 +1,5 @@
-#ifndef PUSHEXIT_H
-#define PUSHEXIT_H
+#ifndef CLEANCALL_H
+#define CLEANCALL_H
 
 
 SEXP r_with_exit_context(SEXP (*fn)(void* data), void* data);

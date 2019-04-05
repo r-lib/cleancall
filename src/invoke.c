@@ -1,7 +1,7 @@
 #define R_NO_REMAP
 #include <Rinternals.h>
 
-#include "pushexit.h"
+#include "cleancall.h"
 
 
 // Initialised at load time with the `.Call` primitive
@@ -17,7 +17,7 @@ static SEXP eval_wrap(void* data) {
   return Rf_eval(args->call, args->env);
 }
 
-SEXP pushexit_invoke(SEXP args, SEXP env) {
+SEXP cleancall_invoke(SEXP args, SEXP env) {
   SEXP call = PROTECT(Rf_lcons(fns_dot_call, args));
   struct eval_args data = { call, env };
 

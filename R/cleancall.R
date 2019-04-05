@@ -1,4 +1,4 @@
-#' @useDynLib pushexit, .registration = TRUE
+#' @useDynLib cleancall, .registration = TRUE
 "_PACKAGE"
 
 #' Call a native routine within an exit context
@@ -8,5 +8,5 @@
 #'
 #' @export
 ptr_invoke <- function(ptr, ...) {
-  .Call(pushexit_invoke, pairlist(ptr, ...), parent.frame())
+  .Call(cleancall_invoke, pairlist(ptr, ...), parent.frame())
 }

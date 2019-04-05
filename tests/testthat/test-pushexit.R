@@ -1,4 +1,4 @@
-context("pushexit")
+context("cleancall")
 
 exp <- pairlist(NULL, quote(first), quote(second))
 
