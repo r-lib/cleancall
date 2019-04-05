@@ -47,13 +47,6 @@ SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot)
     return R_MakeExternalPtr(tmp.p, tag, prot);
 }
 
-DL_FUNC cleancall_ExternalPtrAddrFn(SEXP s)
-{
-    fn_ptr tmp;
-    tmp.p =  EXTPTR_PTR(s);
-    return tmp.fn;
-}
-
 void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p)
 {
     fn_ptr tmp;
