@@ -46,7 +46,7 @@ static void call_exits(void* data) {
   }
 }
 
-SEXP r_with_exit_context(SEXP (*fn)(void* data), void* data) {
+SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data) {
   // Preallocate new stack before changing `callbacks` to avoid
   // leaving the global variable in a bad state if alloc fails
   SEXP new = PROTECT(Rf_cons(R_NilValue, R_NilValue));

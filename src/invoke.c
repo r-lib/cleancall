@@ -21,7 +21,7 @@ SEXP cleancall_call(SEXP args, SEXP env) {
   SEXP call = PROTECT(Rf_lcons(fns_dot_call, args));
   struct eval_args data = { call, env };
 
-  SEXP out = r_with_exit_context(&eval_wrap, &data);
+  SEXP out = r_with_cleanup_context(&eval_wrap, &data);
 
   UNPROTECT(1);
   return out;
