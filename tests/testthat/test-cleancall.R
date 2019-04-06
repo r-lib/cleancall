@@ -28,13 +28,13 @@ test_that("pushing exit outside of context is an error", {
   expect_error(test_no_context(), "outside of an exit context")
 })
 
-test_that("nolocal handlers ignored on success", {
+test_that("early handlers ignored on success", {
   node <- pairlist(NULL)
   expect_null(test_early_ok(node))
   expect_identical(node, pairlist(NULL))
 })
 
-test_that("nolocal handlers run on jump", {
+test_that("early handlers run on jump", {
   node <- pairlist(NULL)
   expect_error(test_early_jump(node), "jump")
   expect_identical(node, exp)
