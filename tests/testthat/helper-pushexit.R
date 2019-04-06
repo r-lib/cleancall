@@ -14,3 +14,12 @@ test_jumpy_cb <- function(node) {
 test_no_cb <- function() {
   call_with_cleanup(ptr_test_no_cb)
 }
+test_early_ok <- function(node) {
+  call_with_cleanup(ptr_test_early_ok, node)
+}
+test_early_jump <- function(node) {
+  call_with_cleanup(ptr_test_early_jump, node)
+}
+test_mixed <- function(node) {
+  call_with_cleanup(ptr_test_mixed, node)
+}
