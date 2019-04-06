@@ -35,8 +35,8 @@ static void call_exits(void* data) {
   SEXP top = CDR(callbacks);
 
   // Restore old stack
-  struct data_wrapper* datawpr = data;
-  callbacks = (SEXP) datawpr->callbacks;
+  struct data_wrapper* state = data;
+  callbacks = (SEXP) state->callbacks;
 
   // Handlers should not jump
   while (top != R_NilValue) {
@@ -49,7 +49,7 @@ static void call_exits(void* data) {
 
     // Check for empty pointer in preallocated callbacks
     if (fn) {
-      if (!early_handler || !datawpr->success) fn(data);
+      if (!early_handler || !state->success) fn(data);
     }
   }
 }
@@ -70,10 +70,10 @@ SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data) {
   SEXP old = callbacks;
   callbacks = new;
 
-  struct data_wrapper datawpr = { fn, data, old, 0 };
+  struct data_wrapper state = { fn, data, old, 0 };
 
-  SEXP out = R_ExecWithCleanup(with_cleanup_context_wrap, &datawpr,
-                               &call_exits, &datawpr);
+  SEXP out = R_ExecWithCleanup(with_cleanup_context_wrap, &state,
+                               &call_exits, &state);
 
   UNPROTECT(1);
   return out;
