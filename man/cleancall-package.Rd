@@ -4,9 +4,19 @@
 \name{cleancall-package}
 \alias{cleancall}
 \alias{cleancall-package}
-\title{cleancall: Push exit handlers for C resources}
+\title{cleancall: C Resource Cleanup via Exit Handlers}
 \description{
-What the package does (one paragraph).
+Wrapper of '.Call()' that runs exit handlers to clean up
+    C resources. Helps when managing C (non-R) resources while using the
+    R API.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/r-lib/cleancall#readme}
+  \item Report bugs at \url{https://github.com/r-lib/cleancall/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Lionel Henry \email{lionel@rstudio.com}
