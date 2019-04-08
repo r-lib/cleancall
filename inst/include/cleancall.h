@@ -4,31 +4,31 @@
 
 static R_INLINE SEXP r_with_cleanup_context(SEXP (*fn)(void* data),
                                             void* data) {
-  static SEXP (*fun)(SEXP (*func)(void*), void *data) = NULL;
-  if (fun == NULL) {
-    fun = (SEXP (*)(SEXP (*)(void *), void *))
+  static SEXP (*cleancall_ptr)(SEXP (*fn)(void*), void *data) = NULL;
+  if (cleancall_ptr == NULL) {
+    cleancall_ptr = (SEXP (*)(SEXP (*)(void *), void *))
       R_GetCCallable("cleancall", "r_with_cleanup_context");
   }
-  return fun(fn, data);
+  return cleancall_ptr(fn, data);
 }
 
 static R_INLINE void r_call_on_exit(void (*fn)(void* data), void* data) {
-  static void (*fun)(void (*func)(void*), void *data) = NULL;
-  if (fun == NULL) {
-    fun = (void (*)(void (*)(void *), void *))
+  static void (*cleancall_ptr)(void (*fn)(void*), void *data) = NULL;
+  if (cleancall_ptr == NULL) {
+    cleancall_ptr = (void (*)(void (*)(void *), void *))
       R_GetCCallable("cleancall", "r_call_on_exit");
   }
-  fun(fn, data);
+  cleancall_ptr(fn, data);
 }
 
 static R_INLINE void r_call_on_early_exit(void (*fn)(void* data),
                                           void* data) {
-  static void (*fun)(void (*func)(void*), void *data) = NULL;
-  if (fun == NULL) {
-    fun = (void (*)(void (*)(void *), void *))
+  static void (*cleancall_ptr)(void (*fn)(void*), void *data) = NULL;
+  if (cleancall_ptr == NULL) {
+    cleancall_ptr = (void (*)(void (*)(void *), void *))
       R_GetCCallable("cleancall", "r_call_on_early_exit");
   }
-  fun(fn, data);
+  cleancall_ptr(fn, data);
 }
 
 #endif
