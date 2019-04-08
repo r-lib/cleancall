@@ -21,6 +21,7 @@ downloads](https://cranlogs.r-pkg.org/badges/cleancall)](https://www.r-pkg.org/p
   wrapper.
 * Restrict an exit handler to run only on early exit (error, interrupt,
   debugger exit, restart invokation, condition caught, etc.).
+  I.e. anything that prevented your function from running its normal course.
 * Exit handlers are executed in reverse order. Last added runs first.
 * Exit handlers can be added from any downstream function, they don't need
   to be called directly from the function called by `call_with_cleanup()`.
@@ -28,9 +29,12 @@ downloads](https://cranlogs.r-pkg.org/badges/cleancall)](https://www.r-pkg.org/p
 ## Limitations
 
 We suggest that exit handlers are kept as simple and fast as possible.
-In particular, early exits _within_ exit handlers are not caught currently.
-If an exit handler exits early the others do not run. If this is an issue,
-you can wrap the exit handler in `R_ToplevelExec()`.
+In particular, errors (and other early exits) triggered from exit handlers
+are not caught currently. If an exit handler exits early the others do not
+run. If this is an issue, you can wrap the exit handler in
+`R_ToplevelExec()`. But note that this solution is not ideal either
+because `R_ToplevelExec()` prevents R functions from handling the errors
+occurring from the handler.
 
 ## Installation
 
