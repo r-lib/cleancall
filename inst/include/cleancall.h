@@ -1,6 +1,7 @@
 #ifndef R_CLEANCALL_H
 #define R_CLEANCALL_H
 
+#include <R_ext/Rdynload.h>
 
 static R_INLINE SEXP r_with_cleanup_context(SEXP (*fn)(void* data),
                                             void* data) {
