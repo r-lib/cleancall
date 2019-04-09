@@ -2,8 +2,8 @@ Package: cleancall
 Title: C Resource Cleanup via Exit Handlers
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut", "cre")),
-    person("Gábor", "Csárdi", role = "aut",
+    person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut")),
+    person("Gábor", "Csárdi", role = c("aut", "cre"),
            email = "csardi.gabor@gmail.com",
            comment = c(ORCID = "0000-0001-7098-9676")),
     person("RStudio", role = "cph")
