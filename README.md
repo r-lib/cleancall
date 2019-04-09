@@ -161,6 +161,45 @@ SEXP processx_wait(SEXP status, SEXP timeout) {
 
 You can see the [whole fix as a commit message on GitHub](https://github.com/r-lib/processx/commit/d05aadd4b0975a391d35a05958421f242bf96d23).
 
+## Usage
+
+### `void r_call_on_exit(void (*fn)(void* data), void *data)`
+
+Push an exit handler to the stack. This exit handler is always executed,
+i.e. both on normal and early exits.
+
+Exit handlers are executed right after the function called from
+`call_with_cleanup()` exits. (Or the function used in
+`r_with_cleanup_context()`, if the cleanup context was established from C.)
+
+Exit handlers are executed in reverse order (last in is first out, LIFO).
+Exit handlers pushed with `r_call_on_exit()` and `r_call_on_early_exit()`
+share the same stack.
+
+Best practice is to use this function immediately after acquiring a
+resource, with the appropriate cleanup function for that resource.
+
+### `void r_call_on_early_exit(void (*fn)(void* data), void *data)`
+
+Push an exit handler to the stack. This exit handler is only executed
+on early exists, _not_ on normal termination.
+
+Exit handlers are executed right after the function called from
+`call_with_cleanup()` exits. (Or the function used in
+`r_with_cleanup_context()`, if the cleanup context was established from C.)
+
+Exit handlers are executed in reverse order (last in is first out, LIFO).
+Exit handlers pushed with `r_call_on_exit()` and `r_call_on_early_exit()`
+share the same stack.
+
+Best practice is to use this function immediately after acquiring a
+resource, with the appropriate cleanup function for that resource.
+
+### `SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data)`
+
+Establish a cleanup stack and call `fn` with `data`. This function can
+be used to establish a cleanup stack from C code.
+
 ## License
 
 MIT @ [RStudio](https://github.com/rstudio)

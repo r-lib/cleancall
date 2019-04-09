@@ -9,8 +9,58 @@ call_with_cleanup(ptr, ...)
 \arguments{
 \item{ptr}{A native pointer object.}
 
-\item{...}{Arguments for the native routine.}
+\item{...}{Arguments for the native routine.
+
+Handlers installed via \code{r_call_on_exit()} are always executed on exit.
+Handlers installed via \code{r_call_on_early_exit()} are only executed
+on early exit, i.e. \emph{not} on normal termination.}
 }
 \description{
-Call a native routine within an exit context
+C functions called this way can call the \code{r_call_on_exit()} and/or
+\code{r_call_on_early_exit()} functions to establish exit handlers.
+}
+\section{C API}{
+
+\itemize{
+\item \code{void r_call_on_exit(void (*fn)(void* data), void *data)}
+
+Push an exit handler to the stack. This exit handler is always
+executed, i.e. both on normal and early exits.
+
+Exit handlers are executed right after the function called from
+\code{call_with_cleanup()} exits. (Or the function used in
+\code{r_with_cleanup_context()}, if the cleanup context was established
+from C.)
+
+Exit handlers are executed in reverse order (last in is first out,
+LIFO). Exit handlers pushed with \code{r_call_on_exit()} and
+\code{r_call_on_early_exit()} share the same stack.
+
+Best practice is to use this function immediately after acquiring a
+resource, with the appropriate cleanup function for that resource.
+\item \code{void r_call_on_early_exit(void (*fn)(void* data), void *data)}
+
+Push an exit handler to the stack. This exit handler is only
+executed on early exists, \emph{not} on normal termination.
+
+Exit handlers are executed right after the function called from
+\code{call_with_cleanup()} exits. (Or the function used in
+\code{r_with_cleanup_context()}, if the cleanup context was established
+from C.)
+
+Exit handlers are executed in reverse order (last in is first out,
+LIFO). Exit handlers pushed with \code{r_call_on_exit()} and
+\code{r_call_on_early_exit()} share the same stack.
+
+Best practice is to use this function immediately after acquiring a
+resource, with the appropriate cleanup function for that resource.
+\item \code{SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data)}
+
+Establish a cleanup stack and call \code{fn} with \code{data}. This function
+can be used to establish a cleanup stack from C code.
+}
+}
+
+\seealso{
+The package README file.
 }
