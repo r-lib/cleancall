@@ -9,7 +9,7 @@ Authors@R: c(
     person("RStudio", role = "cph")
     )
 Description: Wrapper of '.Call()' that runs exit handlers to clean up
-    C resources. Helps when managing C (non-R) resources while using the
+    C resources. Helps managing C (non-R) resources while using the
     R API.
 URL: https://github.com/r-lib/cleancall#readme
 BugReports: https://github.com/r-lib/cleancall/issues
