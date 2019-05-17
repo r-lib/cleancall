@@ -4,3 +4,4 @@
 ^\.travis\.yml$
 ^src/.*\.o$
 ^src/cleancall\.so$
+^README.md$
