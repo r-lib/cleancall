@@ -10,7 +10,7 @@
 status](https://ci.appveyor.com/api/projects/status/p2jjoufya2e66oa5/branch/master?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cleancall)
 [![](https://www.r-pkg.org/badges/version/cleancall)](https://cran.r-project.org/package=cleancall)
 [![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/cleancall)](https://www.r-pkg.org/pkg/cleancall)
+downloads](https://cranlogs.r-pkg.org/badges/cleancall)](www.r-pkg.org/pkg/cleancall)
 [![Coverage status](https://codecov.io/gh/r-lib/cleancall/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/cleancall?branch=master)
 <!-- badges: end -->
 

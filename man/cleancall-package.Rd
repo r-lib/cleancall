@@ -6,8 +6,8 @@
 \alias{cleancall-package}
 \title{cleancall: C Resource Cleanup via Exit Handlers}
 \description{
-Wrapper of '.Call()' that runs exit handlers to clean up
-    C resources. Helps when managing C (non-R) resources while using the
+Wrapper of .Call() that runs exit handlers to clean up
+    C resources. Helps managing C (non-R) resources while using the
     R API.
 }
 \seealso{
@@ -19,11 +19,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Lionel Henry \email{lionel@rstudio.com}
+\strong{Maintainer}: Gábor Csárdi \email{csardi.gabor@gmail.com} (0000-0001-7098-9676)
 
 Authors:
 \itemize{
-  \item Gábor Csárdi \email{csardi.gabor@gmail.com} (0000-0001-7098-9676)
+  \item Lionel Henry \email{lionel@rstudio.com}
 }
 
 Other contributors:
