@@ -1,4 +1,3 @@
-
 # cleancall
 
 > C Resource Cleanup via Exit Handlers
@@ -32,9 +31,7 @@ We suggest that exit handlers are kept as simple and fast as possible.
 In particular, errors (and other early exits) triggered from exit handlers
 are not caught currently. If an exit handler exits early the others do not
 run. If this is an issue, you can wrap the exit handler in
-`R_ToplevelExec()`. But note that this solution is not ideal either
-because `R_ToplevelExec()` prevents R functions from handling the errors
-occurring from the handler.
+`R_tryCatch()` (available for R 3.4.0 and later).
 
 ## Installation
 
