@@ -158,6 +158,9 @@ SEXP processx_wait(SEXP status, SEXP timeout) {
 
 You can see the [whole fix as a commit message on GitHub](https://github.com/r-lib/processx/commit/d05aadd4b0975a391d35a05958421f242bf96d23).
 
+See also our blog post at
+https://www.tidyverse.org/articles/2019/05/resource-cleanup-in-c-and-the-r-api/
+
 ## Usage
 
 ### `void r_call_on_exit(void (*fn)(void* data), void *data)`
