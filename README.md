@@ -205,5 +205,5 @@ be used to establish a cleanup stack from C code.
 MIT @ [RStudio](https://github.com/rstudio)
 
 Please note that the 'cleancall' project is released with a
-[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By
+[Contributor Code of Conduct](https://github.com/r-lib/cleancall/blob/master/.github/CODE_OF_CONDUCT.md). By
 contributing to this project, you agree to abide by its terms.
