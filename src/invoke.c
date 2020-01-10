@@ -5,7 +5,7 @@
 
 
 // Initialised at load time with the `.Call` primitive
-SEXP fns_dot_call;
+extern SEXP fns_dot_call;
 
 struct eval_args {
   SEXP call;
