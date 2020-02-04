@@ -23,6 +23,8 @@ void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
 // Public API
 // --------------------------------------------------------------------
 
+#define CLEANCALL_METHOD_RECORD  {"ptr_call", (DL_FUNC) &cleancall_call, 2}
+
 SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data);
 void r_call_on_exit(void (*fn)(void* data), void* data);
 void r_call_on_early_exit(void (*fn)(void* data), void* data);

@@ -15,7 +15,7 @@ extern SEXP test_early_jump(SEXP);
 extern SEXP test_mixed(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-  {"ptr_call",               (DL_FUNC) &cleancall_call, 2},
+  CLEANCALL_METHOD_RECORD,
   {"ptr_test_jump",          (DL_FUNC) &test_callback_jump, 1},
   {"ptr_test_return",        (DL_FUNC) &test_callback_return, 1},
   {"ptr_test_jumpy_cb",      (DL_FUNC) &test_jumpy_callback, 1},
