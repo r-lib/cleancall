@@ -15,7 +15,7 @@ extern SEXP test_early_jump(SEXP);
 extern SEXP test_mixed(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-  {"ptr_call",               (DL_FUNC) &cleancall_call, 2},
+  CLEANCALL_METHOD_RECORD,
   {"ptr_test_jump",          (DL_FUNC) &test_callback_jump, 1},
   {"ptr_test_return",        (DL_FUNC) &test_callback_return, 1},
   {"ptr_test_jumpy_cb",      (DL_FUNC) &test_jumpy_callback, 1},
@@ -27,13 +27,13 @@ static const R_CallMethodDef CallEntries[] = {
 };
 
 
-SEXP fns_dot_call = NULL;
+extern SEXP cleancall_fns_dot_call;
 
 void R_init_cleancall(DllInfo *dll) {
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
 
-  fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
+  cleancall_fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
 
   R_RegisterCCallable("cleancall", "r_with_cleanup_context",
                       (DL_FUNC) &r_with_cleanup_context);

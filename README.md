@@ -161,6 +161,15 @@ You can see the [whole fix as a commit message on GitHub](https://github.com/r-l
 See also our blog post at
 https://www.tidyverse.org/articles/2019/05/resource-cleanup-in-c-and-the-r-api/
 
+It important to keep in mind that when the cleanup functions run, the
+function that requested them (`processx_wait` in the example above)
+is sometimes not on the call stack any more. (To be precise, currently it
+is ont call stack for early exits, but not for normal exits.) This means
+that we cannot put the address of local variables in the cleanup stack. In
+the example above, we use `handle->waitpipe` as cleanup data, and this is
+fine, because `handle` was allocated on the heap, and cannot be deallocated
+when the `.Call` to `processx_wait` returns.
+
 ## Usage
 
 ### `void r_call_on_exit(void (*fn)(void* data), void *data)`
@@ -199,6 +208,41 @@ resource, with the appropriate cleanup function for that resource.
 
 Establish a cleanup stack and call `fn` with `data`. This function can
 be used to establish a cleanup stack from C code.
+
+## Embedding cleancall
+
+If you don't want to depend on the cleancall package, you can also easily
+embed the cleancall code into your package. These are the steps that you
+need to do:
+
+1. Copy the `cleancall.R` file into your package, into the `R/` directory.
+1. Copy the `cleancall.h` and `cleancall.c` files into your package,
+   into `src/`.
+1. If you have a `Makevars` and/or `Makevars.win` file, and you
+   define `OBJECTS` there, add `cleancall.o` to `OBJECTS`.
+1. Use the `CLEANCALL_METHOD_RECORD` macro in your registration of C
+   functions. E.g.
+   ```c
+   #include "cleancall.h"
+   [...]
+   static const R_CallMethodDef callMethods[]  = {
+     CLEANCALL_METHOD_RECORD,
+     [...]
+     { NULL, NULL, 0 }
+   };
+   ```
+1. Add this call to your package init function:
+   ```c
+   cleancall_fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
+   ```
+1. Use `call_with_cleanup()` instead of `.Call()` for the C functions
+   that you want to add cleanup code to.
+1. Add the `r_call_on_exit()` etc. calls to your C function(s).
+
+This is an example pull request that embeds cleancall into processx:
+https://github.com/r-lib/processx/pull/238
+(This pull request is slightly more complicated than a minimal example,
+because it uses a wrapper to `.Call` already.)
 
 ## License
 

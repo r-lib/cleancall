@@ -1,7 +1,64 @@
 #define R_NO_REMAP
 #include <Rinternals.h>
 
-#include "compat.h"
+#include "cleancall.h"
+
+
+#if (defined(R_VERSION) && R_VERSION < R_Version(3, 4, 0))
+ SEXP R_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot) {
+   fn_ptr ptr;
+   ptr.fn = p;
+   return R_MakeExternalPtr(ptr.p, tag, prot);
+ }
+ DL_FUNC R_ExternalPtrAddrFn(SEXP s) {
+   fn_ptr ptr;
+   ptr.p = EXTPTR_PTR(s);
+   return ptr.fn;
+ }
+#endif
+
+// The R API does not have a setter for function pointers
+
+SEXP cleancall_MakeExternalPtrFn(DL_FUNC p, SEXP tag, SEXP prot) {
+    fn_ptr tmp;
+    tmp.fn = p;
+    return R_MakeExternalPtr(tmp.p, tag, prot);
+}
+
+void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p) {
+    fn_ptr ptr;
+    ptr.fn = p;
+    R_SetExternalPtrAddr(s, ptr.p);
+}
+
+
+// Initialised at load time with the `.Call` primitive
+SEXP cleancall_fns_dot_call = NULL;
+
+void cleancall_init() {
+  cleancall_fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
+}
+
+struct eval_args {
+  SEXP call;
+  SEXP env;
+};
+
+static SEXP eval_wrap(void* data) {
+  struct eval_args* args = (struct eval_args*) data;
+  return Rf_eval(args->call, args->env);
+}
+
+
+SEXP cleancall_call(SEXP args, SEXP env) {
+  SEXP call = PROTECT(Rf_lcons(cleancall_fns_dot_call, args));
+  struct eval_args data = { call, env };
+
+  SEXP out = r_with_cleanup_context(&eval_wrap, &data);
+
+  UNPROTECT(1);
+  return out;
+}
 
 
 static SEXP callbacks = NULL;
