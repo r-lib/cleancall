@@ -161,6 +161,15 @@ You can see the [whole fix as a commit message on GitHub](https://github.com/r-l
 See also our blog post at
 https://www.tidyverse.org/articles/2019/05/resource-cleanup-in-c-and-the-r-api/
 
+It important to keep in mind that when the cleanup functions run, the
+function that requested them (`processx_wait` in the example above)
+is sometimes not on the call stack any more. (To be precise, currently it
+is ont call stack for early exits, but not for normal exits.) This means
+that we cannot put the address of local variables in the cleanup stack. In
+the example above, we use `handle->waitpipe` as cleanup data, and this is
+fine, because `handle` was allocated on the heap, and cannot be deallocated
+when the `.Call` to `processx_wait` returns.
+
 ## Usage
 
 ### `void r_call_on_exit(void (*fn)(void* data), void *data)`
