@@ -27,13 +27,11 @@ static const R_CallMethodDef CallEntries[] = {
 };
 
 
-extern SEXP cleancall_fns_dot_call;
-
 void R_init_cleancall(DllInfo *dll) {
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
 
-  cleancall_fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
+  cleancall_init();
 
   R_RegisterCCallable("cleancall", "r_with_cleanup_context",
                       (DL_FUNC) &r_with_cleanup_context);

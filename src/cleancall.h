@@ -27,7 +27,6 @@ void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
   {"cleancall_call", (DL_FUNC) &cleancall_call, 2}
 
 SEXP cleancall_call(SEXP args, SEXP env);
-extern SEXP cleancall_fns_dot_call;
 void cleancall_init();
 
 // --------------------------------------------------------------------

@@ -233,7 +233,7 @@ need to do:
    ```
 1. Add this call to your package init function:
    ```c
-   cleancall_fns_dot_call = Rf_findVar(Rf_install(".Call"), R_BaseEnv);
+   cleancall_init();
    ```
 1. Use `call_with_cleanup()` instead of `.Call()` for the C functions
    that you want to add cleanup code to.
