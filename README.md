@@ -5,13 +5,11 @@
 <!-- badges: start -->
 
 ![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
-[![Travis build status](https://travis-ci.org/r-lib/cleancall.svg?branch=main)](https://travis-ci.org/r-lib/cleancall)
-[![Windows Build
-status](https://ci.appveyor.com/api/projects/status/p2jjoufya2e66oa5/branch/main?svg=true)](https://ci.appveyor.com/project/gaborcsardi/cleancall)
+[![R-CMD-check](https://github.com/r-lib/cleancall/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/cleancall/actions/workflows/R-CMD-check.yaml)
 [![](https://www.r-pkg.org/badges/version/cleancall)](https://cran.r-project.org/package=cleancall)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/cleancall)](https://www.r-pkg.org/pkg/cleancall)
-[![Coverage status](https://codecov.io/gh/r-lib/cleancall/branch/main/graph/badge.svg)](https://codecov.io/github/r-lib/cleancall?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/cleancall/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/cleancall?branch=main)
 <!-- badges: end -->
 
 ## Features
@@ -244,10 +242,12 @@ https://github.com/r-lib/processx/pull/238
 (This pull request is slightly more complicated than a minimal example,
 because it uses a wrapper to `.Call` already.)
 
+## Code of Conduct
+
+Please note that the cleancall project is released with a
+[Contributor Code of Conduct](https://r-lib.github.io/cleancall/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## License
 
 MIT @ [RStudio](https://github.com/rstudio)
-
-Please note that the 'cleancall' project is released with a
-[Contributor Code of Conduct](https://github.com/r-lib/cleancall/blob/main/.github/CODE_OF_CONDUCT.md). By
-contributing to this project, you agree to abide by its terms.

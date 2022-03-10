@@ -2,24 +2,25 @@ Package: cleancall
 Title: C Resource Cleanup via Exit Handlers
 Version: 0.1.1.9000
 Authors@R: c(
-    person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut")),
-    person("Gábor", "Csárdi", role = c("aut", "cre"),
-           email = "csardi.gabor@gmail.com",
+    person("Lionel", "Henry", , "lionel@rstudio.com", role = "aut"),
+    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7098-9676")),
-    person("RStudio", role = "cph")
-    )
-Description: Wrapper of .Call() that runs exit handlers to clean up
-    C resources. Helps managing C (non-R) resources while using the
-    R API.
-URL: https://github.com/r-lib/cleancall#readme
-BugReports: https://github.com/r-lib/cleancall/issues
+    person("RStudio", role = c("cph", "fnd"))
+  )
+Description: Wrapper of .Call() that runs exit handlers to clean up C
+    resources. Helps managing C (non-R) resources while using the R API.
 License: MIT + file LICENSE
+URL: https://github.com/r-lib/cleancall#readme,
+    https://r-lib.github.io/cleancall/
+BugReports: https://github.com/r-lib/cleancall/issues
+Depends: 
+    R (>= 3.4)
+Suggests: 
+    covr,
+    testthat (>= 3.0.0)
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
-Suggests: 
-    covr,
-    testthat
-Depends: 
-    R (>= 3.1)
+Config/testthat/edition: 3

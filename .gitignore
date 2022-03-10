@@ -1,2 +1,3 @@
 /src/*.o
 /src/cleancall.so
+docs
