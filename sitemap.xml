@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://r-lib.github.io/cleancall/404.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/ISSUE_TEMPLATE.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/reference/call_with_cleanup.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/reference/cleancall-package.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/cleancall/reference/index.html</loc>
+  </url>
+</urlset>
