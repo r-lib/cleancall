@@ -5,7 +5,7 @@ Authors@R: c(
     person("Lionel", "Henry", , "lionel@rstudio.com", role = "aut"),
     person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7098-9676")),
-    person("RStudio", role = "cph")
+    person("RStudio", role = c("cph", "fnd"))
   )
 Description: Wrapper of .Call() that runs exit handlers to clean up C
     resources. Helps managing C (non-R) resources while using the R API.
