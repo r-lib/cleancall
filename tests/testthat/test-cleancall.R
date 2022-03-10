@@ -1,4 +1,3 @@
-context("cleancall")
 
 exp <- pairlist(NULL, quote(first), quote(second))
 
@@ -16,7 +15,9 @@ test_that("handlers are called on error", {
 
 test_that("handlers can jump", {
   node <- pairlist(NULL)
-  expect_error(test_jumpy_cb(node), "jump")
+  err <- tryCatch(test_jumpy_cb(node), error = function(e) e)
+  expect_s3_class(err, "error")
+  expect_match(conditionMessage(err), "jump")
   expect_identical(node, exp)
 })
 
