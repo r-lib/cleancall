@@ -242,10 +242,12 @@ https://github.com/r-lib/processx/pull/238
 (This pull request is slightly more complicated than a minimal example,
 because it uses a wrapper to `.Call` already.)
 
+## Code of Conduct
+
+Please note that the cleancall project is released with a
+[Contributor Code of Conduct](https://r-lib.github.io/cleancall/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## License
 
 MIT @ [RStudio](https://github.com/rstudio)
-
-Please note that the 'cleancall' project is released with a
-[Contributor Code of Conduct](https://github.com/r-lib/cleancall/blob/main/.github/CODE_OF_CONDUCT.md). By
-contributing to this project, you agree to abide by its terms.
