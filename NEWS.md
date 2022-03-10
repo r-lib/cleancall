@@ -1,5 +1,5 @@
 
-# development version
+# 0.1.2
 
 * Fix ABI compatibility for pre and post R 4.0.1 versions. Now CRAN
   builds (with R 4.0.2 and later 4.0.x) work well on R 4.0.0.
