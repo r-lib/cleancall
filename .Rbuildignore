@@ -4,3 +4,6 @@
 ^\.travis\.yml$
 ^src/.*\.o$
 ^src/cleancall\.so$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

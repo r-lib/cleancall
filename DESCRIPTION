@@ -11,7 +11,8 @@ Authors@R: c(
 Description: Wrapper of .Call() that runs exit handlers to clean up
     C resources. Helps managing C (non-R) resources while using the
     R API.
-URL: https://github.com/r-lib/cleancall#readme
+URL: https://github.com/r-lib/cleancall#readme,
+    https://r-lib.github.io/cleancall/
 BugReports: https://github.com/r-lib/cleancall/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -23,3 +24,4 @@ Suggests:
     testthat
 Depends: 
     R (>= 3.1)
+Config/Needs/website: tidyverse/tidytemplate
