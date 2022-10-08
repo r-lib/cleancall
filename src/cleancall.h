@@ -27,7 +27,7 @@ void cleancall_SetExternalPtrAddrFn(SEXP s, DL_FUNC p);
   {"cleancall_call", (DL_FUNC) &cleancall_call, 2}
 
 SEXP cleancall_call(SEXP args, SEXP env);
-void cleancall_init();
+void cleancall_init(void);
 
 // --------------------------------------------------------------------
 // Public API

@@ -65,7 +65,7 @@ SEXP test_jumpy_callback(SEXP node) {
   Rf_error("tilt");
 } /* # nocov (we never get here)*/
 
-SEXP test_no_callbacks() {
+SEXP test_no_callbacks(void) {
   return R_NilValue;
 }
 

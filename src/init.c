@@ -9,7 +9,7 @@ extern SEXP cleancall_call(SEXP, SEXP);
 extern SEXP test_callback_return(SEXP);
 extern SEXP test_callback_jump(SEXP);
 extern SEXP test_jumpy_callback(SEXP);
-extern SEXP test_no_callbacks();
+extern SEXP test_no_callbacks(void);
 extern SEXP test_early_ok(SEXP);
 extern SEXP test_early_jump(SEXP);
 extern SEXP test_mixed(SEXP);
