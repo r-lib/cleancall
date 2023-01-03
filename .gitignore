@@ -1,3 +1,4 @@
 /src/*.o
 /src/cleancall.so
 docs
+.Rproj.user

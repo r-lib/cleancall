@@ -7,3 +7,5 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^cleancall\.Rproj$
+^\.Rproj\.user$
