@@ -2,6 +2,7 @@
 #define CLEANCALL_H
 
 #include <Rversion.h>
+#include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 
 // --------------------------------------------------------------------
