@@ -125,8 +125,6 @@ SEXP r_with_cleanup_context(SEXP (*fn)(void* data), void* data) {
   SEXP new = PROTECT(Rf_cons(R_NilValue, R_NilValue));
   push_callback(new);
 
-  if (!callbacks) callbacks = R_NilValue;
-
   SEXP old = callbacks;
   callbacks = new;
 
