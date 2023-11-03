@@ -40,6 +40,12 @@ You can install the released version of cleancall from
 install.packages("cleancall")
 ```
 
+If you need the development version, install it from GitHub:
+
+``` r
+pak::pak("r-lib/cleancall")
+```
+
 ## Example
 
 This example is from the processx package. Its `processx_wait()` function
