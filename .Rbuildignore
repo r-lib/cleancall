@@ -9,3 +9,4 @@
 ^pkgdown$
 ^cleancall\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
