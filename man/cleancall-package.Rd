@@ -6,14 +6,13 @@
 \alias{cleancall-package}
 \title{cleancall: C Resource Cleanup via Exit Handlers}
 \description{
-Wrapper of .Call() that runs exit handlers to clean up
-    C resources. Helps managing C (non-R) resources while using the
-    R API.
+Wrapper of .Call() that runs exit handlers to clean up C resources. Helps managing C (non-R) resources while using the R API.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/r-lib/cleancall#readme}
+  \item \url{https://r-lib.github.io/cleancall/}
   \item Report bugs at \url{https://github.com/r-lib/cleancall/issues}
 }
 
@@ -23,12 +22,12 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Lionel Henry \email{lionel@rstudio.com}
+  \item Lionel Henry \email{lionel@posit.co}
 }
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder]
+  \item Posit Software, PBC [copyright holder, funder]
 }
 
 }
