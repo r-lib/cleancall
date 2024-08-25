@@ -134,7 +134,7 @@ Then include the `cleancall.h` header in the C code,  and use
 `r_call_on_exit()` to push a cleanup handler to the stack of the
 foreign call:
 
-```
+```c
 #include <cleancall.h>
 
 [...]
