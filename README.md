@@ -9,7 +9,7 @@
 [![](https://www.r-pkg.org/badges/version/cleancall)](https://cran.r-project.org/package=cleancall)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/cleancall)](https://www.r-pkg.org/pkg/cleancall)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/cleancall/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/cleancall?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/cleancall/graph/badge.svg)](https://app.codecov.io/gh/r-lib/cleancall)
 <!-- badges: end -->
 
 ## Features
