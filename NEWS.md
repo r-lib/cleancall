@@ -1,4 +1,4 @@
-# cleancall (development version)
+# cleancall 0.1.4
 
 * No user visible changes.
 
