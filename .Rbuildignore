@@ -11,3 +11,4 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^[.]dev$
+^revdep$
