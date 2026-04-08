@@ -2,6 +2,10 @@
 
 ## cleancall (development version)
 
+## cleancall 0.1.4
+
+CRAN release: 2026-04-08
+
 - No user visible changes.
 
 ## cleancall 0.1.3

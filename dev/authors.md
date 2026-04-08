@@ -16,13 +16,13 @@ Source:
 [`DESCRIPTION`](https://github.com/r-lib/cleancall/blob/main/DESCRIPTION)
 
 Henry L, Csárdi G (2026). *cleancall: C Resource Cleanup via Exit
-Handlers*. R package version 0.1.3.9000,
+Handlers*. R package version 0.1.4.9000,
 <https://r-lib.github.io/cleancall/>.
 
     @Manual{,
       title = {cleancall: C Resource Cleanup via Exit Handlers},
       author = {Lionel Henry and Gábor Csárdi},
       year = {2026},
-      note = {R package version 0.1.3.9000},
+      note = {R package version 0.1.4.9000},
       url = {https://r-lib.github.io/cleancall/},
     }
